@@ -3,75 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramadan 2026 | Saief Shaikh</title>
-
-<link rel="manifest" href="manifest.json">
+<title>Ramadan 2026 App | Saief Shaikh</title>
 
 <style>
-body {
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #0c1b2a, #000814);
-  color:white;
-  text-align:center;
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1542810634-71277d95dcbb');
+    background-size:cover;
+    background-attachment:fixed;
+    color:white;
+    text-align:center;
 }
 
-header {
-  padding:20px;
-  background: #08121f;
-  font-size:22px;
-  font-weight:bold;
-  letter-spacing:1px;
+header{
+    background:#0d3b2e;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
 }
 
-.creator {
-  font-size:14px;
-  color:#ccc;
-  margin-top:5px;
+.container{
+    padding:20px;
 }
 
-.card {
-  background:#0f243a;
-  margin:15px;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 20px rgba(0,0,0,0.5);
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    margin:15px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
 }
 
-.time {
-  font-size:28px;
-  font-weight:bold;
-  margin:10px 0;
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#0d3b2e;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{
+    background:#145c43;
 }
 
-.clock {
-  font-size:40px;
-  margin-top:10px;
-  color:#f5c542;
-}
-
-table {
-  width:100%;
-  margin-top:10px;
-  border-collapse:collapse;
-}
-
-th, td {
-  padding:10px;
-  border-bottom:1px solid #333;
-}
-
-th {
-  background:#122c46;
-}
-
-button {
-  padding:10px 15px;
-  margin:5px;
-  border:none;
-  border-radius:8px;
-  background:#f5c542;
-  font-weight:bold;
+.footer{
+    margin-top:30px;
+    padding:10px;
+    background:#0d3b2e;
 }
 </style>
 </head>
@@ -79,52 +60,58 @@ button {
 <body>
 
 <header>
-🌙 Ramadan 2026 - India
-<div class="creator">Created by Saief Shaikh</div>
+🌙 Ramadan 2026 India App  
+<br>By Saief Shaikh
 </header>
+
+<div class="container">
 
 <div class="card">
 <h2>🕒 Live Clock</h2>
-<div class="clock" id="clock"></div>
+<h1 id="clock"></h1>
 </div>
 
 <div class="card">
-<h2>📍 Pune Timings</h2>
-<div class="time">Sehri Ends: 5:41 AM</div>
-<div class="time">Iftar Time: 6:40 PM</div>
+<h2>📅 Today's Roza Timetable (Pune Example)</h2>
+<p>Sehri: 5:32 AM</p>
+<p>Iftar: 6:45 PM</p>
 </div>
 
 <div class="card">
-<h2>📅 Roza Timetable</h2>
-<table>
-<tr><th>Roza</th><th>Date</th><th>Sehri</th><th>Iftar</th></tr>
-<tr><td>1</td><td>19 Feb</td><td>5:43 AM</td><td>6:38 PM</td></tr>
-<tr><td>2</td><td>20 Feb</td><td>5:42 AM</td><td>6:39 PM</td></tr>
-<tr><td>3</td><td>21 Feb</td><td>5:41 AM</td><td>6:40 PM</td></tr>
-<tr><td>4</td><td>22 Feb</td><td>5:40 AM</td><td>6:41 PM</td></tr>
-<tr><td>5</td><td>23 Feb</td><td>5:39 AM</td><td>6:42 PM</td></tr>
-</table>
+<h2>📖 Islamic Calendar</h2>
+<p>Ramadan 1447 Hijri</p>
 </div>
 
 <div class="card">
-<h2>📆 Calendar</h2>
-<p>Ramadan 1447 AH</p>
-<p>February - March 2026</p>
+<h2>📿 Tasbeeh Counter</h2>
+<h1 id="count">0</h1>
+<button onclick="increase()">Count</button>
+<button onclick="reset()">Reset</button>
+</div>
+
+</div>
+
+<div class="footer">
+Made as Sadqa-e-Jariya for Ammi 🤲  
+Munira Nazir Shaikh
 </div>
 
 <script>
-function updateClock() {
-  const now = new Date();
-  document.getElementById("clock").innerText =
+function updateClock(){
+    const now = new Date();
+    document.getElementById("clock").innerHTML =
     now.toLocaleTimeString();
 }
 setInterval(updateClock,1000);
-updateClock();
-</script>
 
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
+let count=0;
+function increase(){
+    count++;
+    document.getElementById("count").innerHTML=count;
+}
+function reset(){
+    count=0;
+    document.getElementById("count").innerHTML=count;
 }
 </script>
 
